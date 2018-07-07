@@ -4,8 +4,20 @@ namespace App\Services;
 
 class GetCurrenciesCommandHandler
 {
+    private $currencyRepository;
+
+    /**
+     * GetCurrenciesCommandHandler constructor.
+     * @param $currencyRepository
+     */
+    public function __construct(CurrencyRepositoryInterface $currencyRepository)
+    {
+        $this->currencyRepository = $currencyRepository;
+    }
+
+
     public function handle(): array
     {
-        // todo implement
+        return $this->currencyRepository->findAll();
     }
 }
